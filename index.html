@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library SMK Wira Harapan</title>
+    <link rel="icon" type="image/png" href="logo-harapan.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-book-open-reader"></i> E-Lib <span>Wira Harapan</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#info">Informasi</a></li>
+                <li><a href="#katalog">Katalog</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-cart" id="cartBtn" title="Daftar Simpanan Buku">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Perpustakaan Digital <br><span>SMK Wira Harapan</span></h1>
+            <p>Pusat literasi, referensi kejuruan, dan bacaan digital untuk seluruh civitas akademika SMK Wira Harapan.</p>
+            
+            <!-- SEARCH BAR -->
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Cari judul buku, penulis, jurusan, atau topik...">
+            </div>
+        </div>
+    </header>
+
+    <!-- INFORMASI & JAM OPERASIONAL (Pengganti Statistik Angka) -->
+    <section id="info" class="info-section">
+        <div class="info-card">
+            <i class="fa-solid fa-clock icon-info"></i>
+            <div>
+                <h4>Jam Operasional</h4>
+                <p>Senin - Jumat: 07.30 - 16.00 WITA</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <i class="fa-solid fa-id-card icon-info"></i>
+            <div>
+                <h4>Syarat Peminjaman</h4>
+                <p>Gunakan NISN / Kartu Pelajar SMK Wira Harapan</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <i class="fa-solid fa-hand-holding-hand icon-info"></i>
+            <div>
+                <h4>Batas Waktu</h4>
+                <p>Maksimal 7 Hari Peminjaman Buku Fisik</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KATALOG BUKU -->
+    <section id="katalog" class="catalog-section">
+        <div class="section-title">
+            <h2>Katalog Koleksi Buku</h2>
+            <p>Pilih buku sesuai jurusanmu atau nikmati bacaan umum secara langsung</p>
+        </div>
+
+        <!-- FILTER KATEGORI & TIPE -->
+        <div class="filter-wrapper">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">Semua Jurusan</button>
+                <button class="filter-btn" data-category="TKJ">TKJ</button>
+                <button class="filter-btn" data-category="RPL">RPL</button>
+                <button class="filter-btn" data-category="Tata Boga">Tata Boga</button>
+                <button class="filter-btn" data-category="Perhotelan">Perhotelan</button>
+                <button class="filter-btn" data-category="Umum">Umum / Fiksi</button>
+            </div>
+            <div class="type-filter">
+                <label for="typeSelect"><i class="fa-solid fa-filter"></i> Tipe Buku:</label>
+                <select id="typeSelect">
+                    <option value="all">Semua Tipe</option>
+                    <option value="online">E-Book (Bisa Dibaca Online)</option>
+                    <option value="physical">Buku Cetak (Hanya Fisik)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- GRID BUKU -->
+        <div class="book-grid" id="bookGrid">
+            <!-- Data Buku akan di-render oleh JS -->
+        </div>
+    </section>
+
+    <!-- MODAL DETAIL BUKU -->
+    <div class="modal" id="bookModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <div class="modal-body" id="modalDetail">
+                <!-- Content dinamis JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FORM PINJAM BUKU -->
+    <div class="modal" id="borrowModal">
+        <div class="modal-content modal-form">
+            <span class="close-btn" id="closeBorrowModal">&times;</span>
+            <h2>Form Peminjaman Buku</h2>
+            <form id="borrowForm">
+                <div class="form-group">
+                    <label>Judul Buku</label>
+                    <input type="text" id="borrowBookTitle" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Nama Lengkap Siswa</label>
+                    <input type="text" id="studentName" required placeholder="Masukkan nama lengkap siswa">
+                </div>
+                <div class="form-group">
+                    <label>NISN & Kelas</label>
+                    <input type="text" id="studentClass" required placeholder="Contoh: 00512345 / XII RPL 1">
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Rencana Pengambilan</label>
+                    <input type="date" id="borrowDate" required>
+                </div>
+                <button type="submit" class="btn-submit">Konfirmasi Peminjaman</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL BOOKMARK / SIMPANAN -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeCartModal">&times;</span>
+            <h2>Daftar Simpanan Buku Saya</h2>
+            <div id="cartList" class="cart-list">
+                <!-- Items dari JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Perpustakaan Digital SMK Wira Harapan. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
