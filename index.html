@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Library SMK Wira Harapan</title>
-    <link rel="icon" type="image/png" href="logo-harapan.png">
+    <link rel="icon" type="image/png" href="img/logo-harapan.png">
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -51,21 +51,42 @@
             <i class="fa-solid fa-clock icon-info"></i>
             <div>
                 <h4>Jam Operasional</h4>
-                <p>Senin - Jumat: 07.30 - 16.00 WITA</p>
+                <p>Senin - Jumat: 07.30 - 16.00 WITA<br>Sabtu & Minggu: Tutup</p>
             </div>
         </div>
         <div class="info-card">
             <i class="fa-solid fa-id-card icon-info"></i>
             <div>
                 <h4>Syarat Peminjaman</h4>
-                <p>Gunakan NISN / Kartu Pelajar SMK Wira Harapan</p>
+                <p>Gunakan NISN / Kartu Pelajar SMK Wira Harapan yang masih berlaku</p>
             </div>
         </div>
         <div class="info-card">
-            <i class="fa-solid fa-hand-holding-hand icon-info"></i>
+            <i class="fa-solid fa-calendar-check icon-info"></i>
             <div>
-                <h4>Batas Waktu</h4>
-                <p>Maksimal 7 Hari Peminjaman Buku Fisik</p>
+                <h4>Batas Waktu Pinjam</h4>
+                <p>Maksimal 7 hari untuk buku fisik | E-Book: akses tidak dibatasi waktu</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <i class="fa-solid fa-coins icon-info"></i>
+            <div>
+                <h4>Denda Keterlambatan</h4>
+                <p>Rp 500/hari per buku setelah batas waktu pengembalian</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <i class="fa-solid fa-wifi icon-info"></i>
+            <div>
+                <h4>Fasilitas Digital</h4>
+                <p>WiFi gratis, komputer akses katalog, ruang baca nyaman, area diskusi</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <i class="fa-solid fa-headset icon-info"></i>
+            <div>
+                <h4>Hubungi Kami</h4>
+                <p>Email: perpustakaan@smkwiraharapan.sch.id | WA: 08xx-xxxx-xxxx</p>
             </div>
         </div>
     </section>
@@ -80,12 +101,19 @@
         <!-- FILTER KATEGORI & TIPE -->
         <div class="filter-wrapper">
             <div class="filter-buttons">
-                <button class="filter-btn active" data-category="all">Semua Jurusan</button>
+                <button class="filter-btn active" data-category="all">Semua Kategori</button>
                 <button class="filter-btn" data-category="TKJ">TKJ</button>
                 <button class="filter-btn" data-category="RPL">RPL</button>
                 <button class="filter-btn" data-category="Tata Boga">Tata Boga</button>
                 <button class="filter-btn" data-category="Perhotelan">Perhotelan</button>
-                <button class="filter-btn" data-category="Umum">Umum / Fiksi</button>
+                <button class="filter-btn" data-category="IPA">IPA / Sains</button>
+                <button class="filter-btn" data-category="Novel">Novel & Sastra</button>
+                <button class="filter-btn" data-category="Pengembangan Diri">Self Development</button>
+                <button class="filter-btn" data-category="Teknologi">Teknologi & IT</button>
+                <button class="filter-btn" data-category="Agama">Agama & Spiritual</button>
+                <button class="filter-btn" data-category="Bahasa">Bahasa</button>
+                <button class="filter-btn" data-category="Karir">Karir & Kewirausahaan</button>
+                <button class="filter-btn" data-category="Umum">Umum / Lainnya</button>
             </div>
             <div class="type-filter">
                 <label for="typeSelect"><i class="fa-solid fa-filter"></i> Tipe Buku:</label>
@@ -132,8 +160,18 @@
                     <input type="text" id="studentClass" required placeholder="Contoh: 00512345 / XII RPL 1">
                 </div>
                 <div class="form-group">
-                    <label>Tanggal Rencana Pengambilan</label>
+                    <label>Tanggal Pengambilan</label>
                     <input type="date" id="borrowDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Pengembalian (Maks. 7 Hari)</label>
+                    <input type="date" id="returnDate" required>
+                </div>
+                <div class="form-group form-check">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 500;">
+                        <input type="checkbox" id="reminderCheck" style="width: 18px; height: 18px; accent-color: var(--primary-color);">
+                        <span>Aktifkan pengingat pengembalian (notifikasi 1 hari sebelum jatuh tempo)</span>
+                    </label>
                 </div>
                 <button type="submit" class="btn-submit">Konfirmasi Peminjaman</button>
             </form>
