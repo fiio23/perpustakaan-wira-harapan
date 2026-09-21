@@ -71,19 +71,42 @@ body {
     background: var(--primary-color);
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 10px 14px;
+    border-radius: 12px;
     cursor: pointer;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-cart:hover {
+    background: #004085;
+    transform: scale(1.05);
+}
+
+.btn-cart i {
+    font-size: 1.2rem;
 }
 
 .badge {
     background: var(--accent-color);
     color: white;
-    font-size: 0.75rem;
-    padding: 2px 7px;
+    font-size: 0.65rem;
+    padding: 2px 6px;
     border-radius: 50%;
-    margin-left: 5px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
 }
 
 /* HERO SECTION */
@@ -148,10 +171,8 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     max-width: 1100px;
-    margin: -35px auto 40px auto;
+    margin: 40px auto;
     padding: 0 20px;
-    position: relative;
-    z-index: 10;
 }
 
 .info-card {
@@ -394,6 +415,22 @@ body {
     border-radius: 6px;
 }
 
+.form-group.form-check label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.form-group.form-check input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
 .btn-submit {
     width: 100%;
     background: var(--primary-color);
@@ -413,4 +450,184 @@ footer {
     color: white;
     margin-top: 50px;
     font-size: 0.9rem;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 1rem;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        gap: 12px;
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #e2e8f0;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border-radius: 8px;
+    }
+    
+    .hero {
+        height: 45vh;
+        padding: 0 15px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .hero p {
+        font-size: 0.95rem;
+    }
+    
+    .search-box {
+        max-width: 100%;
+        padding: 10px 16px;
+    }
+    
+    .info-section {
+        grid-template-columns: 1fr;
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    
+    .info-card {
+        padding: 16px;
+    }
+    
+    .catalog-section {
+        padding: 15px;
+    }
+    
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+    
+    .filter-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-buttons {
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .type-filter {
+        text-align: center;
+    }
+    
+    .type-filter label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+    
+    .book-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+    }
+    
+    .book-cover {
+        height: 220px;
+    }
+    
+    .book-title {
+        font-size: 0.85rem;
+    }
+    
+    .book-author {
+        font-size: 0.8rem;
+    }
+    
+    .btn-detail, .btn-borrow {
+        padding: 6px;
+        font-size: 0.75rem;
+    }
+    
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .modal-detail-image {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 auto 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0.8rem 1rem;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .nav-links {
+        gap: 8px;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .btn-cart {
+        min-width: 40px;
+        height: 40px;
+        padding: 8px 10px;
+    }
+    
+    .btn-cart i {
+        font-size: 1.1rem;
+    }
+    
+    .badge {
+        min-width: 16px;
+        height: 16px;
+        font-size: 0.6rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .book-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    
+    .book-cover {
+        height: 200px;
+    }
+    
+    .filter-buttons {
+        gap: 6px;
+    }
+    
+    .filter-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
 }
